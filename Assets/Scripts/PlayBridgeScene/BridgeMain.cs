@@ -11,7 +11,7 @@ public class BridgeMain : MonoBehaviour
 
 	private void Start()
 	{
-		portalJumper.EnableWindApplying();
+
 	}
 
 	public static Vector2 ScreenSize()

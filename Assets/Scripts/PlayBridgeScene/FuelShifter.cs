@@ -41,5 +41,6 @@ public class FuelShifter : MonoBehaviour
 		}
 
 		fuelFill.fillAmount = (float)currentFuelLeft / (float)FuelValue;
+		fuelStatus.text = $"fuel left: {(int)(fuelFill.fillAmount * 100)}%";
 	}
 }
