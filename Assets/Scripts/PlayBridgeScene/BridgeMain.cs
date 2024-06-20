@@ -29,4 +29,9 @@ public class BridgeMain : MonoBehaviour
 	{
 
 	}
+
+	public void OnStartActionFrameClosed()
+	{
+
+	}
 }

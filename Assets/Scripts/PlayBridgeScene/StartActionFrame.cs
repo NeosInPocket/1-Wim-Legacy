@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using Finger = UnityEngine.InputSystem.EnhancedTouch.Finger;
 
 public class StartActionFrame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private BridgeMain bridgeMain;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void ActionFrame()
+	{
+		gameObject.SetActive(true);
+		Touch.onFingerDown += Close;
+	}
+
+	public void Close(Finger finger)
+	{
+		Touch.onFingerDown -= Close;
+		bridgeMain.OnStartActionFrameClosed();
+		gameObject.SetActive(false);
+	}
+
+	private void OnDestroy()
+	{
+		Touch.onFingerDown -= Close;
+	}
 }
