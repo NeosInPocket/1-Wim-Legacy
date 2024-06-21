@@ -13,7 +13,7 @@ public class FuelShifter : MonoBehaviour
 
 
 	private float currentFuelLeft;
-	private bool Active;
+	public bool Active;
 
 	private void Start()
 	{
@@ -24,7 +24,16 @@ public class FuelShifter : MonoBehaviour
 	{
 		FuelValue = fuelValue;
 		currentFuelLeft = fuelValue;
+	}
+
+	public void WasteFuel()
+	{
 		Active = true;
+	}
+
+	public void UnWasteFuel()
+	{
+		Active = false;
 	}
 
 	private void Update()
@@ -36,7 +45,10 @@ public class FuelShifter : MonoBehaviour
 		if (currentFuelLeft < 0)
 		{
 			Active = false;
-			bridgeMain.OnRunOutOfFuel();
+			if (!bridgeMain.levelCompleted)
+			{
+				bridgeMain.OnRunOutOfFuel();
+			}
 			currentFuelLeft = 0;
 		}
 

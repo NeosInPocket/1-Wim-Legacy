@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: gives immune to all fire damage including spectating persons
+  m_text: decreases the vertical thrust of the ship
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
   m_sharedMaterial: {fileID: 3066254443749069186, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.25
+  m_fontSize: 46.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: blue fire rune
+  m_text: fuel release
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
   m_sharedMaterial: {fileID: 3066254443749069186, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
@@ -5387,7 +5387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: fire rune
+  m_text: cosmic wind
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
   m_sharedMaterial: {fileID: 3066254443749069186, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
@@ -7110,7 +7110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: gives immune to all fire damage including spectating persons
+  m_text: increases the strength of the horizontal cosmic wind
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}
   m_sharedMaterial: {fileID: 3066254443749069186, guid: 3f5ecb416eb5cb448a4b3edb9767ebfe, type: 2}

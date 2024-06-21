@@ -9,19 +9,19 @@ public class LevelCompleteStatus : MonoBehaviour
 	[SerializeField] private TMP_Text emsCaption;
 	[SerializeField] private TMP_Text playButton;
 
-	public void CompleteStatus(int ems, int bridgeLevel, int winState)
+	public void CompleteStatus(int ems, string completeString, int bridgeLevel, int winState)
 	{
 		gameObject.SetActive(true);
 
 		if (winState == 1)
 		{
-			levelLoseWinRaiseCaption.text = $"level {bridgeLevel} passed!";
+			levelLoseWinRaiseCaption.text = completeString;
 			emsCaption.text = ems.ToString();
 			playButton.text = $"level {bridgeLevel + 1}";
 		}
 		else
 		{
-			levelLoseWinRaiseCaption.text = $"level {bridgeLevel} failed";
+			levelLoseWinRaiseCaption.text = completeString;
 			emsCaption.text = 0.ToString();
 			playButton.text = $"try again";
 		}

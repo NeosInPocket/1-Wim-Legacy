@@ -21,12 +21,12 @@ public class TopLevelInformationHolder : MonoBehaviour
 			}
 
 			progressFilling.fillAmount = (float)currentPortals / (float)maxPortals;
-			progressTexting.text = $"{(int)((float)currentPortals / (float)maxPortals) * 100}%";
+			progressTexting.text = $"{(int)((float)currentPortals / (float)maxPortals * 100f)}%";
 		}
 	}
 	private int currentPortals;
 	private int maxPortals;
-	private int ems;
+	public int ems { get; private set; }
 
 	private void Start()
 	{

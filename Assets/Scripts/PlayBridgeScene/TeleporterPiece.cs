@@ -14,6 +14,7 @@ public class TeleporterPiece : MonoBehaviour
 	public Vector2 screenSizeWithOffset;
 	private float frequency;
 	private int startDirection;
+	public bool Passed;
 
 	private void Start()
 	{
@@ -39,6 +40,8 @@ public class TeleporterPiece : MonoBehaviour
 
 	public void PassThrough()
 	{
+		if (Passed) return;
+		Passed = true;
 		white.SetActive(false);
 		blue.SetActive(true);
 		troughEffect.SetActive(true);

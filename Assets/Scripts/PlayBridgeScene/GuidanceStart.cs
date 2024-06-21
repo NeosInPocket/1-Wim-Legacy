@@ -25,12 +25,17 @@ public class GuidanceStart : MonoBehaviour
 	public void ShowGuidanceStart()
 	{
 		gameObject.SetActive(true);
+	}
+
+	public void EnableTouch()
+	{
 		Touch.onFingerDown += ShowNextCaption;
 	}
 
 	public void ShowNextCaption(Finger finger)
 	{
 		StartCoroutine(ShowString());
+		Touch.onFingerDown -= ShowNextCaption;
 		Touch.onFingerDown += SkipCurrentAction;
 		guidanceAnimator.SetTrigger(animatorTriggerValue);
 	}
@@ -41,10 +46,22 @@ public class GuidanceStart : MonoBehaviour
 		Touch.onFingerDown += ShowNextCaption;
 		StopAllCoroutines();
 		guidanceCaption.text = guidances[currentGuidance];
+		currentGuidance++;
+
+		if (currentGuidance == guidances.Length)
+		{
+			StopGuidance();
+		}
 	}
 
 	public IEnumerator ShowString()
 	{
+		if (currentGuidance == guidances.Length)
+		{
+			StopGuidance();
+			yield break;
+		}
+
 		StringBuilder stringBuilder = new StringBuilder();
 		int length = guidances[currentGuidance].Length;
 		string currentString = guidances[currentGuidance];
@@ -58,6 +75,22 @@ public class GuidanceStart : MonoBehaviour
 			yield return new WaitForSeconds(charDelay);
 		}
 
+		Touch.onFingerDown -= SkipCurrentAction;
 		Touch.onFingerDown += ShowNextCaption;
+		currentGuidance++;
+	}
+
+	public void StopGuidance()
+	{
+		bridgeMain.OnGuidanceStopped();
+		Touch.onFingerDown -= ShowNextCaption;
+		Touch.onFingerDown -= SkipCurrentAction;
+		gameObject.SetActive(false);
+	}
+
+	private void OnDestroy()
+	{
+		Touch.onFingerDown -= ShowNextCaption;
+		Touch.onFingerDown -= SkipCurrentAction;
 	}
 }

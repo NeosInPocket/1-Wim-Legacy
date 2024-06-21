@@ -22,14 +22,14 @@ public class PortalJumper : MonoBehaviour
 	[SerializeField] private GameObject overloadedEffect;
 	[SerializeField] private Collider2D colliderTwoDim;
 	[SerializeField] private float shipDimension;
+	[SerializeField] private FuelShifter fuelShifter;
 
 	private float windForce;
 	private float verticalSpeed;
 	[HideInInspector] public bool ApplyingForce { get; set; }
-	[HideInInspector] public Action PassThrough;
-	[HideInInspector] public Action Overloaded;
 	[HideInInspector] public bool overloaded;
 	[HideInInspector] public Vector2 screenSize;
+	[SerializeField] private BridgeMain bridgeMain;
 
 
 	private void Awake()
@@ -55,12 +55,14 @@ public class PortalJumper : MonoBehaviour
 		Touch.onFingerDown += OnWindApply;
 		Touch.onFingerUp += OnWindDeny;
 		EnableVerticalSpeed();
+		StopAllCoroutines();
 	}
 
 	public void DisableWindApplying()
 	{
 		Touch.onFingerDown -= OnWindApply;
 		Touch.onFingerUp -= OnWindDeny;
+		StopWind();
 		portalRigidBody.velocity = Vector2.zero;
 	}
 
@@ -68,16 +70,22 @@ public class PortalJumper : MonoBehaviour
 	{
 		if (transform.position.y > teleporterSpawner.CurrentTarget.transform.position.y && !overloaded)
 		{
-			Overloaded?.Invoke();
-			overloaded = true;
-			OverloadedEffect();
+			if (!bridgeMain.levelCompleted)
+			{
+				bridgeMain.OnOverloaded("portal missed!");
+				overloaded = true;
+				OverloadedEffect();
+			}
 		}
 
 		if (transform.position.x - shipDimension < -screenSize.x || transform.position.x + shipDimension > screenSize.x)
 		{
-			Overloaded?.Invoke();
-			overloaded = true;
-			OverloadedEffect();
+			if (!bridgeMain.levelCompleted)
+			{
+				bridgeMain.OnOverloaded("crashed!");
+				overloaded = true;
+				OverloadedEffect();
+			}
 		}
 
 		if (ApplyingForce) return;
@@ -95,17 +103,25 @@ public class PortalJumper : MonoBehaviour
 	{
 		if (collider.TryGetComponent<TeleporterPiece>(out TeleporterPiece piece))
 		{
-			teleporterSpawner.CurrentTargetIndex++;
-			piece.PassThrough();
-			PassThrough?.Invoke();
-			return;
+			if (piece.Passed) return;
+
+			if (!bridgeMain.levelCompleted)
+			{
+				teleporterSpawner.CurrentTargetIndex++;
+				piece.PassThrough();
+				bridgeMain.OnPassThrough();
+				return;
+			}
 		}
 
 		if (collider.TryGetComponent<Blocker>(out Blocker blocker))
 		{
-			Overloaded?.Invoke();
-			overloaded = true;
-			OverloadedEffect();
+			if (!bridgeMain.levelCompleted)
+			{
+				bridgeMain.OnOverloaded("crashed!");
+				overloaded = true;
+				OverloadedEffect();
+			}
 		}
 	}
 
@@ -134,6 +150,7 @@ public class PortalJumper : MonoBehaviour
 	{
 		ApplyingForce = true;
 		StartCoroutine(WindForceCoroutine(fromRightSide));
+		fuelShifter.Active = true;
 	}
 
 	public void StopWind()
@@ -141,6 +158,7 @@ public class PortalJumper : MonoBehaviour
 		rightLeft.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 		leftRight.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 		ApplyingForce = false;
+		fuelShifter.Active = false;
 	}
 
 	private IEnumerator WindForceCoroutine(bool fromRightSide)
