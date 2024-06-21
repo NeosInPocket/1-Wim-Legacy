@@ -117,6 +117,7 @@ public class Bridger : MonoBehaviour
 		}
 		else
 		{
+			currentBridger = new int[9];
 			RestoreBridger();
 		}
 	}
@@ -135,7 +136,7 @@ public class Bridger : MonoBehaviour
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			currentBridger[i] = PlayerPrefs.GetInt(i.ToString());
+			currentBridger[i] = PlayerPrefs.GetInt(i.ToString(), startBridger[i]);
 		}
 	}
 }

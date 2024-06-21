@@ -72,7 +72,7 @@ public class PortalJumper : MonoBehaviour
 		{
 			if (!bridgeMain.levelCompleted)
 			{
-				bridgeMain.OnOverloaded("portal missed!");
+				bridgeMain.OnOverloaded("net missed!");
 				overloaded = true;
 				OverloadedEffect();
 			}
@@ -94,7 +94,7 @@ public class PortalJumper : MonoBehaviour
 		{
 			int velocityDirection = portalRigidBody.velocity.x > 0 ? 1 : -1;
 			Vector2 velocity = portalRigidBody.velocity;
-			velocity.x -= velocityDirection * slowDownSpeed * Time.deltaTime;
+			velocity.x -= velocityDirection * windForce * Time.deltaTime;
 			portalRigidBody.velocity = velocity;
 		}
 	}

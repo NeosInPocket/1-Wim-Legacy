@@ -11,5 +11,50 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayBridgeScene.unity
     guid: 75125b753b393644ba01a7582e9f2a9e
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene.unity
+    guid: d36deda5dbab0be44b0ee2d57e93421b
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 1.unity
+    guid: 6f4951044b5f01a40971acd4b8dacebf
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 2.unity
+    guid: 7b935ef0a68271449b63b2593505c1b9
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 3.unity
+    guid: 6ad00ebf3fac61446864a3129c839ed6
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 4.unity
+    guid: 8773c81f07bee834a8010d4036c9f1d2
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 5.unity
+    guid: d3771b6a5dc97c34eb50cafc3dce6f8b
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 6.unity
+    guid: 79a057617af04634091fcd45e16b5243
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 7.unity
+    guid: 2357c783983e2704d99c86ae274d803f
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 8.unity
+    guid: 9898366f6fecb554b86c2b46bb88f0f4
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 9.unity
+    guid: eeee05d971df7f1429168dc01dcc1ccd
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 10.unity
+    guid: 870f49a6411fb7e4689bf79c86f738fc
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 11.unity
+    guid: 119a46e75716ea94b9327aed8db2c5eb
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 12.unity
+    guid: 89c2507d4baf81f488a7e8d4d4209965
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 13.unity
+    guid: 4094ef04d55366c4eaa788d7ad300f80
+  - enabled: 1
+    path: Assets/Scenes/ShipBridgeScene 14.unity
+    guid: a303ceedfb528524782fa144e15c1d4e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 617809b764ae04945a56273910e37d91, type: 2}
